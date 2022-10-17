@@ -61,12 +61,16 @@ public class JobTest {
         Job jobOne = new Job("Coder", new Employer("Apple"), new Location("KC"), new PositionType("Developer"), new CoreCompetency("Drive"));
 
         String str = jobOne.toString();
+        String expectedStr = "\n" +
+                "ID: 1" + "\n" +
+                "Name: Coder" + "\n" +
+                "Employer: Apple" + "\n" +
+                "Location: KC" + "\n" +
+                "Position Type: Developer" + "\n" +
+                "Core Competency: Drive" +
+                "\n";
 
-        assertTrue(str.contains("Name: Coder"));
-        assertTrue(str.contains("Employer: Apple"));
-        assertTrue(str.contains("Location: KC"));
-        assertTrue(str.contains("Position Type: Developer"));
-        assertTrue(str.contains("Core Competency: Drive"));
+        assertEquals(str, expectedStr);
     }
 
     @Test
@@ -74,8 +78,16 @@ public class JobTest {
         Job jobOne = new Job("Coder", new Employer(""), new Location(null), new PositionType("Developer"), new CoreCompetency("Drive"));
 
         String str = jobOne.toString();
-        assertTrue(str.contains("Employer: Data not available"));
-        assertTrue(str.contains("Location: Data not available"));
+        String expectedStr = "\n" +
+                "ID: 1" + "\n" +
+                "Name: Coder" + "\n" +
+                "Employer: Data not available" + "\n" +
+                "Location: Data not available" + "\n" +
+                "Position Type: Developer" + "\n" +
+                "Core Competency: Drive" +
+                "\n";
+
+        assertEquals(expectedStr, str);
     }
 
 }
