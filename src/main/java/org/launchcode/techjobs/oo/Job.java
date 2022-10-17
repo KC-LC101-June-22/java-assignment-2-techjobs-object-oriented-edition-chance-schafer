@@ -95,4 +95,40 @@ public class Job {
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
+
+    public String toString() {
+
+        String missingData = "Data not available";
+        String name = getName();
+        String employer = getEmployer().getValue();
+        String location = getLocation().getValue();
+        String positionType = getPositionType().getValue();
+        String coreCompetency = getCoreCompetency().getValue();
+
+        if(name == null || name == "") {
+            name = missingData;
+        }
+
+        if(employer == null || employer == "") {
+            employer = missingData;
+        }
+
+        if(location == null || location == "") {
+            location = missingData;
+        }
+
+        if(positionType == null || positionType == "") {
+            positionType = missingData;
+        }
+
+        if(coreCompetency == null || coreCompetency == "") {
+            coreCompetency = missingData;
+        }
+
+        if(coreCompetency == missingData && positionType == missingData && location == missingData && employer == missingData && name == missingData) {
+            return "OOPS! This job does not seem to exist";
+        } else {
+            return "\n" + "ID: " + getId() + "\n" + "Name: " + name + "\n" + "Employer: " + employer + "\n" + "Location: " + location + "\n" + "Position Type: " + positionType + "\n" + "Core Competency: " + coreCompetency + "\n";
+        }
+    }
 }
